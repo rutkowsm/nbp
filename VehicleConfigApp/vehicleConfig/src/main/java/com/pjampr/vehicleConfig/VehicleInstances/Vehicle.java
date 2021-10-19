@@ -1,11 +1,13 @@
 package com.pjampr.vehicleConfig.VehicleInstances;
 
+import com.pjampr.vehicleConfig.VehicleInstances.Dictionaries.VehicleType;
+
 public class Vehicle {
 
     protected String registrationNumber;
     protected String brand;
     protected String model;
-    protected com.pjampr.vehicleConfig.VehicleInstances.vehicleType vehicleType;
+    protected VehicleType vehicleType;
     protected int wheels;
     protected boolean isElectric;
     protected String colour;
@@ -13,7 +15,7 @@ public class Vehicle {
     protected boolean hasNavigation;
 
 
-    public Vehicle(String registrationNumber, String brand, String model, com.pjampr.vehicleConfig.VehicleInstances.vehicleType vehicleType, int wheels, boolean isElectric, String colour, boolean hasInsurance, boolean hasNavigation) {
+    public Vehicle(String registrationNumber, String brand, String model, VehicleType vehicleType, int wheels, boolean isElectric, String colour, boolean hasInsurance, boolean hasNavigation) {
         this.registrationNumber = registrationNumber;
         this.brand = brand;
         this.model = model;
@@ -49,11 +51,11 @@ public class Vehicle {
         this.model = model;
     }
 
-    public com.pjampr.vehicleConfig.VehicleInstances.vehicleType getVehicleType() {
+    public VehicleType getVehicleType() {
         return vehicleType;
     }
 
-    public void setVehicleType(com.pjampr.vehicleConfig.VehicleInstances.vehicleType vehicleType) {
+    public void setVehicleType(VehicleType vehicleType) {
         this.vehicleType = vehicleType;
     }
 
