@@ -11,14 +11,16 @@ public class Car extends  Vehicle {
     protected int numSeats;             //How many people can it carry?
     protected int numDoors;             //Quantity of door including trunk (typically 3, 4 or 5)
     protected DriveType driveType;         //front, back, 4x4, AWD, etc.
+    private int trunkCapacityLitres;
 
-    public Car(String registrationNumber, String brand, String model, VehicleType vehicleType, int wheels, boolean isElectric, String colour, boolean hasInsurance, boolean hasNavigation, CarSubType carSubType, boolean hasSpareWheel, int numSeats, int numDoors, DriveType driveType) {
-        super(registrationNumber, brand, model, vehicleType, wheels, isElectric, colour, hasInsurance, hasNavigation);
+    public Car(String registrationNumber, String brand, String model, String additionalName, int engineCapacity, int horsePower, VehicleType vehicleType, int wheels, boolean isElectric, String colour, boolean hasInsurance, boolean hasNavigation, CarSubType carSubType, boolean hasSpareWheel, int numSeats, int numDoors, DriveType driveType, int trunkCapacityLitres) {
+        super(registrationNumber, brand, model, additionalName, engineCapacity, horsePower, vehicleType, wheels, isElectric, colour, hasInsurance, hasNavigation);
         this.carSubType = carSubType;
         this.hasSpareWheel = hasSpareWheel;
         this.numSeats = numSeats;
         this.numDoors = numDoors;
         this.driveType = driveType;
+        this.trunkCapacityLitres = trunkCapacityLitres;
     }
 
     public CarSubType getCarSubType() {
@@ -60,4 +62,6 @@ public class Car extends  Vehicle {
     public void setDriveType(DriveType driveType) {
         this.driveType = driveType;
     }
+
+
 }
