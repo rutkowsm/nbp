@@ -4,7 +4,7 @@ import com.pjampr.vehicleConfig.VehicleInstances.Dictionaries.CarSubType;
 import com.pjampr.vehicleConfig.VehicleInstances.Dictionaries.DriveType;
 import com.pjampr.vehicleConfig.VehicleInstances.Dictionaries.VehicleType;
 
-public class Car extends  Vehicle {
+public class Car extends Vehicle {
 
     protected CarSubType carSubType;    //SUV, LIMO, LORRY, etc...
     protected boolean hasSpareWheel;
@@ -13,8 +13,18 @@ public class Car extends  Vehicle {
     protected DriveType driveType;         //front, back, 4x4, AWD, etc.
     private int trunkCapacityLitres;
 
-    public Car(String registrationNumber, String brand, String model, String additionalName, int engineCapacity, int horsePower, VehicleType vehicleType, int wheels, boolean isElectric, String colour, boolean hasInsurance, boolean hasNavigation, CarSubType carSubType, boolean hasSpareWheel, int numSeats, int numDoors, DriveType driveType, int trunkCapacityLitres) {
-        super(registrationNumber, brand, model, additionalName, engineCapacity, horsePower, vehicleType, wheels, isElectric, colour, hasInsurance, hasNavigation);
+    public Car(String registrationNumber, String brand, String model, int yearOfProduction, String additionalName, String engineType, String fuelType, int engineCapacity, int horsePower, VehicleType vehicleType, String gearType, String driversLicenceRequired, int yearsOfLicenceRequired, int wheels, String colour, boolean hasInsurance, boolean hasNavigation, CarSubType carSubType, boolean hasSpareWheel, int numSeats, int numDoors, DriveType driveType, int trunkCapacityLitres, boolean isAvailable, int basePrice) {
+        super(registrationNumber, brand, model, yearOfProduction, additionalName, engineType, fuelType, engineCapacity, horsePower, vehicleType, gearType, driversLicenceRequired, yearsOfLicenceRequired, wheels, colour, hasInsurance, hasNavigation, isAvailable, basePrice);
+        this.carSubType = carSubType;
+        this.hasSpareWheel = hasSpareWheel;
+        this.numSeats = numSeats;
+        this.numDoors = numDoors;
+        this.driveType = driveType;
+        this.trunkCapacityLitres = trunkCapacityLitres;
+    }
+
+    public Car(String registrationNumber, String brand, String model, int yearOfProduction, String additionalName, String engineType, String fuelType, int engineCapacity, int horsePower, VehicleType vehicleType, String gearType, String driversLicenceRequired, int yearsOfLicenceRequired, int wheels, String colour, boolean hasInsurance, boolean hasNavigation, boolean isAvailable, int basePrice, CarSubType carSubType, boolean hasSpareWheel, int numSeats, int numDoors, DriveType driveType, int trunkCapacityLitres) {
+        super(registrationNumber, brand, model, yearOfProduction, additionalName, engineType, fuelType, engineCapacity, horsePower, vehicleType, gearType, driversLicenceRequired, yearsOfLicenceRequired, wheels, colour, hasInsurance, hasNavigation, isAvailable, basePrice);
         this.carSubType = carSubType;
         this.hasSpareWheel = hasSpareWheel;
         this.numSeats = numSeats;
@@ -61,6 +71,23 @@ public class Car extends  Vehicle {
 
     public void setDriveType(DriveType driveType) {
         this.driveType = driveType;
+    }
+
+    public boolean rentCar(){
+        if (isAvailable){
+            setIsAvailable(false);
+            return true;
+        }
+        return false;
+
+    }
+
+    public boolean returnCar(){
+        if (!isAvailable){
+            setIsAvailable(true);
+            return true;
+        }
+        return false;
     }
 
 
