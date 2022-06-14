@@ -5,6 +5,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+
 @Service
 public class RatesService {
 
@@ -18,6 +20,11 @@ public class RatesService {
 
     public CurrencyRate getTodayRateByCode(String code){
         return this.restTemplate.exchange(RATES_URL + "/" + code + "/today/", HttpMethod.GET, null,
+                CurrencyRate.class).getBody();
+    }
+
+    public CurrencyRate getTodayRateUsd(){
+        return this.restTemplate.exchange(RATES_URL + "/USD/today/", HttpMethod.GET, null,
                 CurrencyRate.class).getBody();
     }
 }

@@ -19,7 +19,12 @@ public class RateController {
 
     @GetMapping("/today/{code}")
     public ResponseEntity<CurrencyRate> getTodayRateByCode(@PathVariable String code){
-        return ResponseEntity.ok(ratesService.getTodayRateByCode(code));
+        return ResponseEntity.ok(this.ratesService.getTodayRateByCode(code));
+    }
+
+    @GetMapping("today/dolar")
+    public ResponseEntity<CurrencyRate> getTodayRateUsd(){
+        return ResponseEntity.ok(this.ratesService.getTodayRateUsd());
     }
 
 
