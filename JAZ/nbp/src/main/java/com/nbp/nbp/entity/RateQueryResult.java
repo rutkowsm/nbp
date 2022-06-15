@@ -1,28 +1,29 @@
 package com.nbp.nbp.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RateQueryResult {
-    private char table;
+    private String table;
     private String currency;
     private String code;
-    private List<CurrencyRate> rates;
+    private ArrayList<Rate> rates;
 
     public RateQueryResult() {
     }
 
-    public RateQueryResult(char table, String currency, String code, List<CurrencyRate> rates) {
+    public RateQueryResult(String table, String currency, String code, ArrayList<Rate> rates) {
         this.table = table;
         this.currency = currency;
         this.code = code;
         this.rates = rates;
     }
 
-    public char getTable() {
+    public String getTable() {
         return table;
     }
 
-    public void setTable(char table) {
+    public void setTable(String table) {
         this.table = table;
     }
 
@@ -42,11 +43,11 @@ public class RateQueryResult {
         this.code = code;
     }
 
-    public List<CurrencyRate> getRates() {
+    public List<Rate> getRates() {
         return rates;
     }
 
-    public void setRates(List<CurrencyRate> rates) {
+    public void setRates(ArrayList<Rate> rates) {
         this.rates = rates;
     }
 

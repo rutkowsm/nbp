@@ -1,6 +1,7 @@
 package com.nbp.nbp.controller;
 
-import com.nbp.nbp.entity.CurrencyRate;
+import com.nbp.nbp.entity.Rate;
+import com.nbp.nbp.entity.RateQueryResult;
 import com.nbp.nbp.service.RatesService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,14 +19,24 @@ public class RateController {
     }
 
     @GetMapping("/today/{code}")
-    public ResponseEntity<CurrencyRate> getTodayRateByCode(@PathVariable String code){
+    public ResponseEntity<RateQueryResult> getTodayRateByCode(@PathVariable String code){
         return ResponseEntity.ok(this.ratesService.getTodayRateByCode(code));
     }
 
-    @GetMapping("today/dolar")
-    public ResponseEntity<CurrencyRate> getTodayRateUsd(){
+    @GetMapping("/today/dolar")
+    public ResponseEntity<RateQueryResult> getTodayRateUsd(){
         return ResponseEntity.ok(this.ratesService.getTodayRateUsd());
     }
 
+    @GetMapping("/dolar/{effectiveDate}")
+    public ResponseEntity<RateQueryResult> getRateUsdByDate(@PathVariable String effectiveDate){
+        return ResponseEntity.ok(this.ratesService.getRateUsdByDate(effectiveDate));
+    }
+
+    @GetMapping("/{code}/{effectiveDate}")
+    public ResponseEntity<RateQueryResult> getRateByDateAndCode(@PathVariable String code,
+                                                                @PathVariable String effectiveDate){
+        return ResponseEntity.ok(this.ratesService.getRateByDateAndCode(code, effectiveDate));
+    }
 
 }

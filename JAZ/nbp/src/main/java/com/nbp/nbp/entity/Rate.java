@@ -5,16 +5,16 @@ import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
-public class CurrencyRate {
+public class Rate {
     @Id
     private String no;
-    private Date effectiveDate;
+    private String effectiveDate;
     private double mid;
 
-    public CurrencyRate() {
+    public Rate() {
     }
 
-    public CurrencyRate(String no, Date effectiveDate, double mid) {
+    public Rate(String no, String effectiveDate, double mid) {
         this.no = no;
         this.effectiveDate = effectiveDate;
         this.mid = mid;
@@ -28,11 +28,11 @@ public class CurrencyRate {
         this.no = no;
     }
 
-    public Date getEffectiveDate() {
+    public String getEffectiveDate() {
         return effectiveDate;
     }
 
-    public void setEffectiveDate(Date effectiveDate) {
+    public void setEffectiveDate(String effectiveDate) {
         this.effectiveDate = effectiveDate;
     }
 
@@ -46,7 +46,7 @@ public class CurrencyRate {
 
     @Override
     public String toString() {
-        return "CurrencyRate{" +
+        return "Rate{" +
                 "no='" + no + '\'' +
                 ", effectiveDate=" + effectiveDate +
                 ", mid=" + mid +

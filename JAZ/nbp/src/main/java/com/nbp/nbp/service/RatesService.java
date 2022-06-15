@@ -1,11 +1,12 @@
 package com.nbp.nbp.service;
 
-import com.nbp.nbp.entity.CurrencyRate;
+import com.nbp.nbp.entity.Rate;
+import com.nbp.nbp.entity.RateQueryResult;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.List;
+import java.util.Date;
 
 @Service
 public class RatesService {
@@ -18,13 +19,23 @@ public class RatesService {
         this.restTemplate = restTemplate;
     }
 
-    public CurrencyRate getTodayRateByCode(String code){
+    public RateQueryResult getTodayRateByCode(String code){
         return this.restTemplate.exchange(RATES_URL + "/" + code + "/today/", HttpMethod.GET, null,
-                CurrencyRate.class).getBody();
+                RateQueryResult.class).getBody();
     }
 
-    public CurrencyRate getTodayRateUsd(){
+    public RateQueryResult getTodayRateUsd(){
         return this.restTemplate.exchange(RATES_URL + "/USD/today/", HttpMethod.GET, null,
-                CurrencyRate.class).getBody();
+                RateQueryResult.class).getBody();
+    }
+
+    public RateQueryResult getRateUsdByDate(String effectiveDate) {
+        return this.restTemplate.exchange(RATES_URL + "/USD/" + effectiveDate + "/", HttpMethod.GET, null,
+                RateQueryResult.class).getBody();
+    }
+
+    public RateQueryResult getRateByDateAndCode(String code, String effectiveDate) {
+        return this.restTemplate.exchange(RATES_URL + "/" + code +  "/" + effectiveDate + "/", HttpMethod.GET, null,
+                RateQueryResult.class).getBody();
     }
 }
