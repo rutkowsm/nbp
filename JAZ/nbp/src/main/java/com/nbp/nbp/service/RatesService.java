@@ -7,14 +7,9 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.text.DateFormat;
-import java.text.Format;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
 
 @Service
 public class RatesService {
@@ -55,5 +50,13 @@ public class RatesService {
         return this.restTemplate.exchange(RATES_URL + "/" + currencyCode + "/" + startDate + "/" + endDate,
                 HttpMethod.GET, null, RateQueryResult.class).getBody();
     }
+
+    public List<Rate> returnMidRates(String currencyCode, int daysBack){
+        List<Rate> allRates = getRatesByCodeAndNoOfDays(currencyCode, daysBack).getRates();
+
+        return allRates;
+    }
+
+
 
 }
