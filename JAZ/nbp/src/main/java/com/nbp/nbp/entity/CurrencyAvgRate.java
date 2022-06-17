@@ -5,6 +5,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.sql.Timestamp;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @ApiModel(value = "CurrencyAvgRate", description = "Query log regarding average rates")
@@ -12,6 +14,7 @@ import javax.persistence.Id;
 public class CurrencyAvgRate {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @ApiModelProperty(value = "Unique identifier of particular query", readOnly = true)
     private Long queryId;
     @ApiModelProperty(value = "Standard code of the selected currency")
