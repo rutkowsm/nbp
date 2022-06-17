@@ -1,5 +1,6 @@
 package com.nbp.nbp.controller;
 
+import com.nbp.nbp.entity.CurrencyAvgRate;
 import com.nbp.nbp.entity.Rate;
 import com.nbp.nbp.entity.RateQueryResult;
 import com.nbp.nbp.service.RatesService;
@@ -38,5 +39,13 @@ public class RateController {
                                                                 @PathVariable String effectiveDate){
         return ResponseEntity.ok(this.ratesService.getRateByDateAndCode(code, effectiveDate));
     }
+
+    @GetMapping("/avg/{currencyCode}/days")
+    public ResponseEntity<RateQueryResult> getRatesByCodeAndNoOfDays(@PathVariable String currencyCode,
+                                                                       @RequestParam int daysBack){
+        return ResponseEntity.ok(this.ratesService.getRatesByCodeAndNoOfDays(currencyCode, daysBack));
+    }
+
+
 
 }

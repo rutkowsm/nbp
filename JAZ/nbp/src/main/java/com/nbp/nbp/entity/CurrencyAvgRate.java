@@ -15,7 +15,7 @@ public class CurrencyAvgRate {
     @ApiModelProperty(value = "Unique identifier of particular query", readOnly = true)
     private Long queryId;
     @ApiModelProperty(value = "Standard code of the selected currency")
-    private char currencyCode;
+    private String currencyCode;
     @ApiModelProperty(value = "Name of the selected currency in Polish")
     private String currencyName;
     @ApiModelProperty(value = "Average price calculated for selected currency within given number of days back")
@@ -29,7 +29,7 @@ public class CurrencyAvgRate {
 
     }
 
-    public CurrencyAvgRate(Long queryId, char currencyCode, String currencyName, double avgRate, int daysBack, Timestamp queryTs) {
+    public CurrencyAvgRate(Long queryId, String currencyCode, String currencyName, double avgRate, int daysBack, Timestamp queryTs) {
         this.queryId = queryId;
         this.currencyCode = currencyCode;
         this.currencyName = currencyName;
@@ -46,11 +46,11 @@ public class CurrencyAvgRate {
         this.queryId = queryId;
     }
 
-    public char getCurrencyCode() {
+    public String getCurrencyCode() {
         return currencyCode;
     }
 
-    public void setCurrencyCode(char currencyCode) {
+    public void setCurrencyCode(String currencyCode) {
         this.currencyCode = currencyCode;
     }
 
